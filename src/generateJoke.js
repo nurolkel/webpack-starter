@@ -1,5 +1,15 @@
+import axios from 'axios'
+
 function generateJoke() {
-    return 'My dad is tougher than you'
+    const config = {
+        header: {
+            Accept: 'application/json'
+        },
+    }
+
+    axios.get('https://icanhazdadjoke.com', config).then((res) => {
+        document.getElementById('joke').innerHTML = res.data.joke
+    })
 }
 
 export default generateJoke;
